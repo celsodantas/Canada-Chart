@@ -23,18 +23,18 @@
 	                type: 'column'
 	            },
 	            title: {
-	                text: 'Monthly Average Rainfall'
+	                text: 'Documentos enviados para o processo Federal de Imigração do Canada' 
 	            },
 	            subtitle: {
-	                text: 'Source: WorldClimate.com'
+	                text: 'Source: timelines-quebec.com'
 	            },
 	            xAxis: {
-	                categories: <%= @window.times.map {|i| i.months.ago.strftime("%b") }.reverse %>
+	                categories: <%= @window.times.map {|i| i.months.ago.strftime("%b/%y") }.reverse %>
 	            },
 	            yAxis: {
 	                min: 0,
 	                title: {
-	                    text: 'Rainfall (mm)'
+	                    text: 'Quantidade de documentos (unid)'
 	                }
 	            },
 	            legend: {
@@ -50,7 +50,7 @@
 	            tooltip: {
 	                formatter: function() {
 	                    return ''+
-	                        this.x +': '+ this.y +' mm';
+	                        this.x +': '+ this.y +' documentos';
 	                }
 	            },
 	            plotOptions: {

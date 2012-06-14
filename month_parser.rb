@@ -7,20 +7,17 @@ def parse_by_month(processess, window)
   index    = 0
   
   window.times do |i|
+    first_day = i.month.ago.at_beginning_of_month
+    last_day  = i.month.ago.at_end_of_month
+    
     by_month[index] = 0
     
-    year  = i.months.ago.year
-    month = i.months.ago.month
-    
-    first_day = (Time.now - i.months.ago.at_beginning_of_month) / 1.day
-    last_day  = (Time.now - i.months.ago.at_end_of_month) / 1.day
-  
     processess.each do |process|
-      days_ago = process["processoTempoFederal"].to_i
-      p days_ago
-      p first_day
-      p last_day
-      by_month[index] += 1 if days_ago > first_day && days_ago < last_day
+      time = process["processoTempoFederal"].to_i
+      
+      if time.days.ago > first_day && time.days.ago < last_day
+        by_month[index] += 1
+      end
     end
     
     index += 1
