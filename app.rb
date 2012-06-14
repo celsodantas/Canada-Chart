@@ -2,8 +2,8 @@ require 'sinatra/base'
 require 'sinatra/reloader'
 require 'open-uri'
 require 'json'
-require 'month_parser'
-require 'cache'
+require './month_parser'
+require './cache'
 
 module CanadaChart
   class Application < Sinatra::Base
