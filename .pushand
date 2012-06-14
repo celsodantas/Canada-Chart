@@ -1,2 +1,2 @@
 #! /bin/bash
-phd $0 Canada_Chart Canada_Chart
+phd $0 canada_chart canada_chart
