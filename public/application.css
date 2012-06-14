@@ -1,5 +1,7 @@
 #container {
-	min-width: 400px; 
-	height: 400px; 
-	margin: 0 auto;
+	position:absolute; 
+	top:50%; 
+	height:450px; 
+	width: 98%;
+	margin-top:-225px
 }
