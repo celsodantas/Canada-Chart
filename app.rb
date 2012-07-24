@@ -12,11 +12,17 @@ module CanadaChart
       @window = 24 # months
 
       if Cache.get_data
-        @processess_by_month = Cache.get_data
+        @datas = Cache.get_data
       else
-        @processess_by_month = parse_by_month(processes, @window)
-        Cache.store(@processess_by_month)
+        @datas = Hash.new
+        @datas[:process] = parse_by_month(processes, @window)
+        @datas[:exams]   = parse_medical_exam_received_by_month(processes, @window)
+        
+        Cache.store(@datas)
       end
+      
+       @processess_by_month = @datas[:process]
+       @exams_by_month      = @datas[:exams]
 
       erb :index
     end
